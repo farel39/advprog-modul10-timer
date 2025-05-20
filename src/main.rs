@@ -76,7 +76,19 @@ fn main() {
         TimerFuture::new(Duration::new(2, 0)).await;
         println!("Argya's Computer: done!");
     });
+
+    spawner.spawn(async {
+        println!("Argya's Computer: howdy2!");
+        TimerFuture::new(Duration::new(2, 0)).await;
+        println!("Argya's Computer: done2!");
+    });
+
+    spawner.spawn(async {
+        println!("Argya's Computer: howdy3!");
+        TimerFuture::new(Duration::new(2, 0)).await;
+        println!("Argya's Computer: done3!");
+    });
     println!("Argya's Computer: outside spawn");
-    drop(spawner);
+    // drop(spawner);
     executor.run();
 }
